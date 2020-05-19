@@ -10,11 +10,10 @@ if (secret) {
 
 export default async (req, res) => {
   try {
-    // let collections = [];
-    //
-    // if (!client) {
-    //   return [];
-    // }
+    if (!client) {
+      return {};
+    }
+    await client.query(q.Create(q.Collection('test'), { data: res.body.results}));
     //
     // await client
     //   .paginate(q.Collections())
@@ -23,7 +22,7 @@ export default async (req, res) => {
     //     collections = collections.concat(page);
     //   });
 
-    res.json({ results: req.body.results });
+    res.json({ result : "ok" });
   } catch (error) {
     res.status(500).json({ error });
   }
