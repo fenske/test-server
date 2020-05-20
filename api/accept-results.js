@@ -12,7 +12,7 @@ let db = admin.firestore();
 
 export default async (req, res) => {
   try {
-    let docRef = db.collection('test').doc('test-doc');
+    let docRef = db.collection('test').doc(req.body.user);
 
     await docRef.set(req.body);
 
