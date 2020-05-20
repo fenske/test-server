@@ -20,10 +20,11 @@ export default async (req, res) => {
       born: 1815
     });
 
-    let users = await db.collection('users');
+    let users = await db.collection('users').get();
     users.forEach((doc) => {
       console.log(doc.id, '=>', doc.data());
     });
+
     res.json({result: 'ok'})
   } catch (error) {
     console.log(error);
