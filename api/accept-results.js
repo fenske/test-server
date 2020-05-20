@@ -14,7 +14,10 @@ export default async (req, res) => {
   try {
     let docRef = db.collection('test').doc(req.body.user);
 
-    await docRef.set(req.body);
+    await docRef.set({
+      user: req.body.user,
+      results: req.body.results
+    });
 
     res.json({result: 'ok'})
   } catch (error) {
