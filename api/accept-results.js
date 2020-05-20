@@ -14,9 +14,14 @@ export default async (req, res) => {
   try {
     let docRef = db.collection('test').doc(req.body.user);
 
-    await docRef.set({
+    docRef.set({
       user: req.body.user,
       results: req.body.results
+    });
+
+    let snapshot = await db.collection('test').get();
+    snapshot.forEach((doc) => {
+      console.log(doc.id, '=>', doc.data());
     });
 
     res.json({result: 'ok'})
