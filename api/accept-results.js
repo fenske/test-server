@@ -1,7 +1,11 @@
 const admin = require('firebase-admin');
 
+function fromB64(string) {
+  return Buffer.from(string, 'base64').toString();
+}
+
 admin.initializeApp({
-  credential: admin.credential.cert(process.env.GCLOUD_CREDENTIALS)
+  credential: admin.credential.cert(JSON.parse(fromB64(process.env.GCLOUD_CREDENTIALS)))
 });
 
 let db = admin.firestore();
