@@ -10,7 +10,7 @@ admin.initializeApp({
 
 let db = admin.firestore();
 
-export default (req, res) => {
+export default async (req, res) => {
   try {
     let docRef = db.collection('test').doc('test-doc');
 
@@ -18,6 +18,11 @@ export default (req, res) => {
       first: 'Ada',
       last: 'Lovelace',
       born: 1815
+    });
+
+    let users = await db.collection('users');
+    users.forEach((doc) => {
+      console.log(doc.id, '=>', doc.data());
     });
     res.json({result: 'ok'})
   } catch (error) {
