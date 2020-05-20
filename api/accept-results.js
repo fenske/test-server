@@ -14,16 +14,7 @@ export default async (req, res) => {
   try {
     let docRef = db.collection('test').doc('test-doc');
 
-    let setAda = docRef.set({
-      first: 'Ada',
-      last: 'Lovelace',
-      born: 1815
-    });
-
-    let users = await db.collection('users').get();
-    users.forEach((doc) => {
-      console.log(doc.id, '=>', doc.data());
-    });
+    await docRef.set(req.body);
 
     res.json({result: 'ok'})
   } catch (error) {
