@@ -12,6 +12,8 @@ let db = admin.firestore();
 
 export default async (req, res) => {
   try {
+    //TODO: validate user
+
     let docRef = db.collection('test').doc(req.body.user);
 
     docRef.set({
