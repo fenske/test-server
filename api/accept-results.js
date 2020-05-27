@@ -24,7 +24,7 @@ export default async (req, res) => {
   try {
     //TODO: validate user
 
-    let docRef = db.collection(`users/${req.body.user}/runs`).add(
+    let docRef = await db.collection(`users/${req.body.user}/runs`).add(
       {
         challenge: req.body.challenge,
         results: req.body.results,
