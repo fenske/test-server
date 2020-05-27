@@ -2,7 +2,7 @@ const admin = require('firebase-admin');
 
 // TODO For tomorrow
 // DONE. Come up with a quick and reasonable data model 10 mins
-// Write the results to a user space in Firestore 10 mins
+// DONE. Write the results to a user space in Firestore 10 mins
 
 //TODO: Next iteration
 // 1. Hook up a trigger on Firestore write when a test result arrives. 20 mins
